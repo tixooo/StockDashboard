@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from "react";
-import Main from "./components/Main/Main";
+import Main from "./components/Main/Main.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import { Route, Routes } from 'react-router-dom';
 import AuthenticatedRoute from './hoc/AuthenticatedRoute.jsx';
