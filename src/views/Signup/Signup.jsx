@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import './Signup.css'
 import { useState } from 'react';
+import React from 'react';
 
 export default function Signup() {
 
