@@ -4,7 +4,7 @@ import React from 'react';
 export default function Main() {
     return (
         <>
-            <div>To be implemented...</div>
+           <p>Work in progress</p>
         </>
-    );
+    )
 }
