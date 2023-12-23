@@ -1,4 +1,4 @@
-import React, { createContext, useState} from "react";
+import React, { createContext,useContext ,useState} from "react";
 // import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
@@ -7,13 +7,14 @@ export default function AuthProvider({ children }) {
     const login = async (username, password) => {
         try {
             // Making a request to the backend to validate the credentials
-            const response = await fetch('https://smd-backend-nu2a.onrender.com/api/auth/register', {
+            const response = await fetch('https://smd-backend-nu2a.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username: username, password: password }),
             });
+
 
             if (response.ok) {
                 // If successful, setting user in the state
@@ -41,10 +42,10 @@ export default function AuthProvider({ children }) {
     );
 };
 
-// export const useAuth = () => {
-//     const context = useContext(AuthContext);
-//     if (!context) {
-//         throw new Error('useAuth must be used within an AuthProvider');
-//     }
-//     return context;
-// }
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+}
