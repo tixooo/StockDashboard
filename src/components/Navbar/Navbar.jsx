@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import Logo from './../../assets/images/logo.png';
 import './Navbar.css'
 export default function Navbar() {
-
     return (
         <nav className="navigation">
             <div className="navigation-menu">
@@ -28,9 +27,6 @@ export default function Navbar() {
                     </li>
                 </ul>
             </div>
-
         </nav>
-
-
     )
 }
