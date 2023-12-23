@@ -12,8 +12,7 @@ export default function AuthProvider({ children }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username: username, password: password }),
-                credentials: 'include'
+                body: JSON.stringify({ username: username, password: password })
             });
 
 
