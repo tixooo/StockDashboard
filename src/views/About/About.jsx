@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import Footer from "../../components/Footer/Footer"
 import './About.css'
+import React from 'react';
 
 export default function About() {
 
