@@ -14,13 +14,11 @@ export default function AuthProvider({ children }) {
                 },
                 body: JSON.stringify({username, password})
             })
-
-
             if (response.ok) {
                 // If successful, setting user in the state
                 const userData = await response.json();
                 setUser(userData);
-                console.log(userData)
+                console.log('Login successful')
                 // Optionally, store user information in local storage or a cookie
                 // localStorage.setItem('authUser', JSON.stringify(userData));
             } else {
