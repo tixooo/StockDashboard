@@ -20,7 +20,7 @@ export default function AuthProvider({ children }) {
                 // If successful, setting user in the state
                 const userData = await response.json();
                 setUser(userData);
-
+                console.log(userData)
                 // Optionally, store user information in local storage or a cookie
                 // localStorage.setItem('authUser', JSON.stringify(userData));
             } else {
