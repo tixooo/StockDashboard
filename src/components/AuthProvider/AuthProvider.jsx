@@ -4,7 +4,7 @@ import React, { createContext,useContext ,useState} from "react";
 const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
-    const login = async (username, password) => {
+    const login = async (username, password, email, fullName) => {
         try {
             // Making a request to the backend to validate the credentials
             const response = await fetch('https://smd-backend-nu2a.onrender.com/api/auth/login', {
@@ -12,7 +12,7 @@ export default function AuthProvider({ children }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({username, password})
+                body: JSON.stringify({username, password, email, fullName})
             })
             if (response.ok) {
                 // If successful, setting user in the state
