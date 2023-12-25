@@ -15,11 +15,12 @@ const SignIn = () => {
     <div className="login">
         <h1>Login</h1>
         <form onSubmit={handleFormSubmit}>
-        <input type="text" name="username" placeholder="Username"/>
-        <input type="password" name="password" placeholder="Password"/>
-        <input type="password" name="repeat password" placeholder="Repeat password"/>
-        <input type="email" name="email" placeholder="Email"/>
-        <button type="submit">Login</button>
+            <input type="text" name="fullname" placeholder="Full name"/>
+            <input type="text" name="username" placeholder="Username"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="password" name="repeat password" placeholder="Repeat password"/>
+            <input type="email" name="email" placeholder="Email"/>
+            <button type="submit">Login</button>
         </form>
     </div>
 </>
