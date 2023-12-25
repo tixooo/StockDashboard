@@ -7,7 +7,7 @@ import {
     Main,
     AuthProvider,
     SignIn
-} from './components/barrelComponents.js';
+} from './utils/barrelComponents.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 let App = () => {
