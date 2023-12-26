@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Navbar,
     Footer,
@@ -7,6 +6,7 @@ import {
     SignIn,
     SignUp,
 } from './utils/barrelComponents.js';
+import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 let App = () => {
