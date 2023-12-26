@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import React from 'react';
+import '../../tailwind.css'
 export default function Navbar() {
     return (
         <>
             <div className="logo">
                 Logo to be implemented (auto generate something with AI)
             </div>
-            <nav className="navigation">
+            <nav className="bg-blue-500 text-white p-4">
                 <div className="navigation-menu">
                     <NavLink to="/" className="wrapper-logo"></NavLink>
                     <ul className="list">
@@ -34,7 +33,7 @@ export default function Navbar() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="signup" className="nav-link">
+                            <NavLink to="register" className="nav-link">
                                 Register
                             </NavLink>
                         </li>

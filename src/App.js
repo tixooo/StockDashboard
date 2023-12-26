@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React from 'react';
 import {
     Navbar,
     Footer,
     Main,
     AuthProvider,
-    SignIn
+    SignIn,
+    SignUp,
 } from './utils/barrelComponents.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ let App = () => {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/login" element={<SignIn />} />
-                    <Route path="/register" element={<Main />} />
+                    <Route path="/register" element={<SignUp />} />
                     <Route path="/about" element={<Main />} />
                 </Routes>
                 <Footer />
