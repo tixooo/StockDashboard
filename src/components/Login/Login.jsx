@@ -17,10 +17,18 @@ const SignIn = () => {
             <div className="login">
                 <h1>Login</h1>
                 <form onSubmit={handleFormSubmit}>
+<label htmlFor="fullName">Full name</label>
                     <input type="text" name="fullName" placeholder="Full name"/>
+
+                    <label htmlFor="username">Username</label>
                     <input type="text" name="username" placeholder="Username"/>
+
+                    <label htmlFor="password">Password</label>
                     <input type="password" name="password" placeholder="Password"/>
+
+                    <label htmlFor="email">Email</label>
                     <input type="email" name="email" placeholder="Email"/>
+
                     <button type="submit">Login</button>
                 </form>
             </div>

@@ -17,10 +17,19 @@ const SignUp = () => {
             <div className="register">
                 <h1>Register</h1>
                 <form onSubmit={handleFormSubmit}>
+                    <label htmlFor="fullName">Full name</label>
                     <input type="text" name="fullName" placeholder="Full name"/>
+
+                    <label htmlFor="username">Username</label>
                     <input type="text" name="username" placeholder="Username"/>
+
+                    <label htmlFor="password">Password</label>
                     <input type="password" name="password" placeholder="Password"/>
+
+                    <label htmlFor="repeatPassword">Repeat password</label>
                     <input type="password" name="repeatPassword" placeholder="Repeat password"/>
+
+                    <label htmlFor="email">Email</label>
                     <input type="email" name="email" placeholder="Email"/>
                     <button type="submit">Register</button>
                 </form>
