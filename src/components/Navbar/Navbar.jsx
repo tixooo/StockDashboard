@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import { NavLink } from "react-router-dom";
-import './Navbar.css'
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 import React from 'react';
 export default function Navbar() {
     return (
         <>
-            <div className="logo">Logo to be implemented (auto generate something with AI)</div>
+            <div className="logo">
+                Logo to be implemented (auto generate something with AI)
+            </div>
             <nav className="navigation">
                 <div className="navigation-menu">
-                    <NavLink to="/" className="wrapper-logo">
-                    </NavLink>
+                    <NavLink to="/" className="wrapper-logo"></NavLink>
                     <ul className="list">
                         <li>
                             <NavLink to="/" className="nav-link">
