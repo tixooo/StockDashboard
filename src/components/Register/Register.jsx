@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../AuthProvider/AuthProvider.jsx';
 
 const SignUp = () => {
   const { register } = useAuth();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const username = e.target.elements.username.value;
     const password = e.target.elements.password.value;
+    const repeatPassword = e.target.elements.repeatPassword.value;
     const email = e.target.elements.email.value;
     const fullName = e.target.elements.fullName.value;
+
+    // Check if passwords match
+    if (password !== repeatPassword) {
+      // to create a custom modal for the error
+      alert('Passwords do not match');
+      setErrorMessage('Passwords do not match');
+      return; // Stop the form submission
+    }
+    // Clear error message if passwords match
+    setErrorMessage('');
+
+    // Proceed with the registration
     register(username, password, fullName, email);
   };
   return (
