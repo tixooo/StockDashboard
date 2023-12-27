@@ -4,18 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 let MainView = () => {
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <Main />
-          </div>
-          <div className="col-md-6">
-            <Sidebar />
-          </div>
+    <div className="container-fluid px-4 my-4">
+      {' '}
+      {/* Added padding and margin */}
+      <div className="row">
+        <div className="col-11">
+          <Main />
+        </div>
+        <div className="col-1">
+          <Sidebar />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
