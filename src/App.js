@@ -1,12 +1,12 @@
 import {
     Navbar,
     Footer,
-    Main,
     AuthProvider,
     SignIn,
     SignUp,
 } from './utils/barrelComponents.js';
-// import React from "react";
+import MainView from './Views/MainView.jsx';
+import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 let App = () => {
@@ -15,10 +15,10 @@ let App = () => {
             <AuthProvider>
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<Main />} />
+                    <Route path="/" element={<MainView />} />
                     <Route path="/login" element={<SignIn />} />
                     <Route path="/register" element={<SignUp />} />
-                    <Route path="/about" element={<Main />} />
+                    <Route path="/about" element={<MainView />} />
                 </Routes>
                 <Footer />
             </AuthProvider>

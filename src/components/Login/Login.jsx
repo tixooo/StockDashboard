@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../AuthProvider/AuthProvider.jsx';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 const SignIn = () => {
     const { login } = useAuth();
 
@@ -29,7 +29,7 @@ const SignIn = () => {
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" placeholder="Email"/>
 
-                    <button type="submit">Login</button>
+                    <button type="button" className="btn btn-primary">Login</button>
                 </form>
             </div>
         </>
