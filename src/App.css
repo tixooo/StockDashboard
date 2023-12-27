@@ -1,0 +1,16 @@
+/* App.css */
+.container-fluid {
+    padding: 1rem; /* Adjusts padding around the main content */
+}
+
+/* Adjusts the top and bottom margin */
+.my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Adjusts the left and right padding */
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

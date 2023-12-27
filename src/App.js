@@ -10,6 +10,7 @@ import store from './redux/store.js';
 import MainView from './Views/MainView.jsx';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
 
 let App = () => {
   return (
