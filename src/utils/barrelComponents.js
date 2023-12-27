@@ -6,4 +6,4 @@ import SignIn from '../components/Login/Login.jsx';
 import SignUp from '../components/Register/Register.jsx';
 import Sidebar from '../components/Sidebar/Sidebar.jsx';
 
-export { Footer, Navbar, Main, AuthProvider, SignIn, SignUp, Sidebar};
+export { Footer, Navbar, Main, AuthProvider, SignIn, SignUp, Sidebar };
