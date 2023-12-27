@@ -1,17 +1,16 @@
 import React from 'react';
 import { Main, Sidebar } from '../utils/barrelComponents.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './MainView.css';
 
 let MainView = () => {
   return (
-    <div className="container-fluid px-4 my-4">
-      {' '}
-      {/* Added padding and margin */}
-      <div className="row">
-        <div className="col-11">
+    <div className="container-fluid h-100">
+      <div className="row h-100">
+        <div className="col-10 pr-2">
           <Main />
         </div>
-        <div className="col-1">
+        <div className="col-2">
           <Sidebar />
         </div>
       </div>

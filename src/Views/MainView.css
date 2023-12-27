@@ -1,0 +1,14 @@
+.container-fluid {
+    padding: 1rem; /* Adjusts padding around the main content */
+}
+
+.row.h-100 {
+    min-height: calc(100vh - 120px); /* Adjust based on navbar and footer height */
+}
+
+.col-10 {
+    padding-right: 5%; /* Creates a 5% gap between Main and Sidebar */
+}
+.card {
+    height: 90%;
+}
