@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../AuthProvider/AuthProvider.jsx';
+import { useDispatch } from 'react-redux';
+import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
 
 const SignUp = () => {
-  const { register } = useAuth();
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleFormSubmit = (e) => {
@@ -16,7 +17,6 @@ const SignUp = () => {
     // Check if passwords match
     if (password !== repeatPassword) {
       // to create a custom modal for the error
-      alert('Passwords do not match');
       setErrorMessage('Passwords do not match');
       return; // Stop the form submission
     }
@@ -24,13 +24,14 @@ const SignUp = () => {
     setErrorMessage('');
 
     // Proceed with the registration
-    register(username, password, fullName, email);
+    dispatch(registerAction({ username, password, fullName, email }));
   };
   return (
     <>
       <div className="register">
         <h1>Register</h1>
         <form onSubmit={handleFormSubmit}>
+          {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
           <label htmlFor="fullName">Full name</label>
           <input type="text" name="fullName" placeholder="Full name" />
 

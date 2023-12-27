@@ -1,9 +1,10 @@
 import React from 'react';
-import { useAuth } from '../AuthProvider/AuthProvider.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../AuthProvider/AuthSlice/AuthSlice.js';
 
 const SignIn = () => {
-  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ const SignIn = () => {
     const password = e.target.elements.password.value;
     const email = e.target.elements.email.value;
     const fullName = e.target.elements.fullName.value;
-    login(username, password, fullName, email);
+    dispatch(loginSuccess({ username, password, fullName, email }));
   };
   return (
     <>
@@ -30,7 +31,7 @@ const SignIn = () => {
           <label htmlFor="email">Email</label>
           <input type="email" name="email" placeholder="Email" />
 
-          <button type="button" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Login
           </button>
         </form>
