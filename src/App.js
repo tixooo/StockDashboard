@@ -6,7 +6,7 @@ import {
     SignUp,
 } from './utils/barrelComponents.js';
 import MainView from './Views/MainView.jsx';
-import React from "react";
+// import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 let App = () => {
