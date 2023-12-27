@@ -9,11 +9,9 @@ export default function Sidebar() {
         <li className="list-group-item">
           Top 10 most purchased in the last 7 days
         </li>
-        {/* Example list items */}
         <li className="list-group-item">Item 1</li>
         <li className="list-group-item">Item 2</li>
         <li className="list-group-item">Item 3</li>
-        {/* ... Add more items as needed ... */}
       </ul>
     </div>
   );
