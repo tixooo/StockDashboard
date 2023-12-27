@@ -10,7 +10,7 @@ export default function Main() {
             <p>Number of total transactions</p>
             <p>Number of daily transactions</p>
             <p>Special AI assistant (MAYBE!)</p>
-            <p>Other stuff...</p>
+            <p>Other stuff... </p>
         </>
     )
 }
