@@ -3,7 +3,8 @@ import {
   Footer,
   SignIn,
   SignUp,
-  Profile
+  Profile,
+  About
 } from './utils/barrelComponents.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
@@ -21,7 +22,7 @@ let App = () => {
           <Route path="/" element={<MainView />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
-          <Route path="/about" element={<MainView />} />
+          <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
