@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
+import './Navbar.css';
 
 export default function Navbar() {
   const user = useSelector((state) => state.auth.user);
