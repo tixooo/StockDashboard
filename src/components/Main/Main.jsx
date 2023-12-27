@@ -1,9 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Main.css';
 
 export default function Main() {
   return (
-    <div className="card h-90">
+    <div className="card main-card h-90">
       <div className="card-header">
         <h4>Welcome to Our App</h4>
       </div>

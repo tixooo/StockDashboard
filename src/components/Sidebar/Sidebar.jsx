@@ -1,9 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Sidebar.css'; // Import the CSS file
 
 export default function Sidebar() {
   return (
-    <div className="card">
+    <div className="card sidebar-card">
       <div className="card-header">Sidebar</div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
