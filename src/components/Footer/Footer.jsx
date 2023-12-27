@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
-import './Footer.css';
 import React from 'react';
 
 const Footer = () => {
     return (
-        <p className="footer">
+        <div className="border p-3 fixed-bottom bg-info">
+        <p className="footer text-center">
             &copy; Stock Market Dashboard
         </p>
+        </div>
     )
 }
 
