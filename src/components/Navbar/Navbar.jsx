@@ -100,9 +100,11 @@ export default function Navbar() {
                     </button>
                   </li>
                   <li className="nav-item">
-                    {/* <NavLink className="nav-link" to="/register">
-                      Register
-                    </NavLink> */}
+                    {
+                      <NavLink className="nav-link" to="/register">
+                        Register
+                      </NavLink>
+                    }
                     <button
                       onClick={handleProfileClick}
                       className="btn btn-link nav-link"
