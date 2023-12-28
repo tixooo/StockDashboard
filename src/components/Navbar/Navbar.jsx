@@ -51,9 +51,12 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/forum">
+                <a
+                  className="nav-link"
+                  href="https://smdashboard.forumotion.com/"
+                >
                   Forum
-                </NavLink>
+                </a>
               </li>
               {isAuthenticated ? (
                 <>
