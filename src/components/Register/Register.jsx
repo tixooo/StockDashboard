@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux';
 import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
 
-const SignUp = () => {
+const SignUp = ({ show, handleClose }) => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +32,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="register">
-        <h1>Register</h1>
-        <button onClick={() => setShowModal(true)}>Register</button>
-      </div>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header>
@@ -74,6 +69,11 @@ const SignUp = () => {
             </button>
           </form>
         </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

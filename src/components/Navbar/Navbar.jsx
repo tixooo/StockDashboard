@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
 import SignIn from '../Login/Login.jsx';
+import SignUp from '../Register/Register.jsx';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -13,11 +14,18 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const handleRegisterClick = () => {
+    setShowRegisterModal(true);
+  };
   const handleProfileClick = () => {
     setShowProfileModal(true);
   };
   const handleProfileLogIn = () => {
     setShowLoginModal(true);
+  };
+  const handleCloseRegister = () => {
+    setShowRegisterModal(false);
   };
   const handleCloseProfileLogIn = () => {
     setShowLoginModal(false);
@@ -40,6 +48,11 @@ export default function Navbar() {
         user={user}
         show={showLoginModal}
         handleClose={handleCloseProfileLogIn}
+      />
+      <SignUp
+        user={user}
+        show={showRegisterModal}
+        handleClose={handleCloseRegister}
       />
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -100,11 +113,14 @@ export default function Navbar() {
                     </button>
                   </li>
                   <li className="nav-item">
-                    {
-                      <NavLink className="nav-link" to="/register">
-                        Register
-                      </NavLink>
-                    }
+                    <button
+                      onClick={handleRegisterClick}
+                      className="btn btn-link nav-link"
+                    >
+                      Register
+                    </button>
+                  </li>
+                  <li className="nav-item">
                     <button
                       onClick={handleProfileClick}
                       className="btn btn-link nav-link"

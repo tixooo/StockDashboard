@@ -1,35 +1,49 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../AuthProvider/AuthSlice/AuthSlice.js';
+import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
 
-const SignIn = () => {
+const SignUp = () => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const username = e.target.elements.username.value;
     const password = e.target.elements.password.value;
+    const repeatPassword = e.target.elements.repeatPassword.value;
     const email = e.target.elements.email.value;
     const fullName = e.target.elements.fullName.value;
-    dispatch(loginSuccess({ username, password, fullName, email }));
-    setShowModal(true);
+
+    // Check if passwords match
+    if (password !== repeatPassword) {
+      // to create a custom modal for the error
+      setErrorMessage('Passwords do not match');
+      return; // Stop the form submission
+    }
+    // Clear error message if passwords match
+    setErrorMessage('');
+
+    // Proceed with the registration
+    dispatch(registerAction({ username, password, fullName, email }));
+    setShowModal(false);
   };
 
   return (
     <>
-      <div className="login">
-        <h1>Login</h1>
-        <button onClick={() => setShowModal(true)}>Login</button>
+      <div className="register">
+        <h1>Register</h1>
+        <button onClick={() => setShowModal(true)}>Register</button>
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleFormSubmit}>
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <p>
               <label htmlFor="fullName">Full name</label>
               <input type="text" name="fullName" placeholder="Full name" />
@@ -43,11 +57,20 @@ const SignIn = () => {
               <input type="password" name="password" placeholder="Password" />
             </p>
             <p>
+              <label htmlFor="repeatPassword">Repeat password</label>
+              <input
+                type="password"
+                name="repeatPassword"
+                placeholder="Repeat password"
+              />
+            </p>
+            <p>
               <label htmlFor="email">Email</label>
               <input type="email" name="email" placeholder="Email" />
             </p>
+
             <button type="submit" className="btn btn-primary">
-              Login
+              Register
             </button>
           </form>
         </Modal.Body>
@@ -56,4 +79,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
