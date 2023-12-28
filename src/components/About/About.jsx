@@ -5,7 +5,18 @@ import './About.css';
 const About = () => {
   return (
     <div className="container my-5 about-page">
-      <h1 className="text-center mb-4">About Us</h1>
+      <div className="row mb-4">
+        <div className="col-md-6">
+          <img
+            src="https://i.imgur.com/zfVk9OR.png" // Update with the correct path to your logo
+            alt="Logo"
+            className="img-fluid" // Responsive image
+          />
+        </div>
+        <div className="col-md-6 d-flex align-items-center justify-content-center">
+          <h1 className="about-title">About Us</h1>
+        </div>
+      </div>
       <div className="row">
         <div className="col-md-6 mb-3">
           <div className="card h-100">

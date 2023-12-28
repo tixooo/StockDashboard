@@ -1,5 +1,4 @@
-/* Navbar.css */
 .navbar {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow */
-    border: none; /* Optional: Removes the default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
 }

@@ -1,16 +1,22 @@
 .about-page h1 {
-    color: #343a40; /* Darker shade of gray */
+    color: #343a40;
 }
 
 .about-page .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: none; /* Remove default border */
+    border: none;
 }
 
 .about-page .card-title {
-    color: #495057; /* Slightly lighter shade of gray for card titles */
+    color: #495057;
 }
 
 .about-page .card-text {
-    color: #6c757d; /* Muted text color for content */
+    color: #6c757d;
+}
+.about-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #343a40;
+    font-family: 'Roboto', sans-serif;
 }

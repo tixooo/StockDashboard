@@ -32,7 +32,11 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            Logo Here
+            <img
+              src="https://i.imgur.com/zfVk9OR.png"
+              alt="Logo"
+              style={{ height: '50px' }}
+            />
           </NavLink>
           <div className="d-flex justify-content-end w-100">
             <ul className="navbar-nav">
