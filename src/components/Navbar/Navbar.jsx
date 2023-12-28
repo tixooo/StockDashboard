@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
+import SignIn from '../Login/Login.jsx';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -11,10 +12,16 @@ export default function Navbar() {
   const isAuthenticated = !!user;
   const dispatch = useDispatch();
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const handleProfileClick = () => {
     setShowProfileModal(true);
   };
-
+  const handleProfileLogIn = () => {
+    setShowLoginModal(true);
+  };
+  const handleCloseProfileLogIn = () => {
+    setShowLoginModal(false);
+  };
   const handleCloseModal = () => {
     setShowProfileModal(false);
   };
@@ -28,6 +35,11 @@ export default function Navbar() {
         user={user}
         show={showProfileModal}
         handleClose={handleCloseModal}
+      />
+      <SignIn
+        user={user}
+        show={showLoginModal}
+        handleClose={handleCloseProfileLogIn}
       />
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -80,14 +92,23 @@ export default function Navbar() {
               ) : (
                 <>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/login">
+                    <button
+                      onClick={handleProfileLogIn}
+                      className="btn btn-link nav-link"
+                    >
                       Log In
-                    </NavLink>
+                    </button>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/register">
+                    {/* <NavLink className="nav-link" to="/register">
                       Register
-                    </NavLink>
+                    </NavLink> */}
+                    <button
+                      onClick={handleProfileClick}
+                      className="btn btn-link nav-link"
+                    >
+                      Profile
+                    </button>
                   </li>
                 </>
               )}
