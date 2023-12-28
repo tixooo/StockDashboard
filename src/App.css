@@ -1,4 +1,3 @@
-/* App.css */
 .container-fluid {
     padding: 1rem; /* Adjusts padding around the main content */
 }
@@ -9,7 +8,7 @@
     margin-bottom: 1rem;
 }
 
-/* Adjusts the left and right padding */
+/*Adjusts the left and right padding*/
 .px-4 {
     padding-left: 1rem;
     padding-right: 1rem;

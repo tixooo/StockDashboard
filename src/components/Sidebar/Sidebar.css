@@ -1,15 +1,15 @@
 .sidebar-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow */
-    margin-top: 1rem; /* Adds some space at the top */
-    margin-bottom: 1rem; /* Adds some space at the bottom */
-    border: none; /* Optional: Removes the default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
 }
 
 .sidebar-card .card-header {
-    background-color: #f8f9fa; /* Light background for the header */
-    border-bottom: none; /* Optional: Removes the bottom border */
+    background-color: #f8f9fa;
+    border-bottom: none;
 }
 
 .sidebar-card .list-group-item {
-    color: #495057; /* Dark gray text color */
+    color: #495057;
 }
