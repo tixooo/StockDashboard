@@ -120,14 +120,6 @@ export default function Navbar() {
                       Register
                     </button>
                   </li>
-                  <li className="nav-item">
-                    <button
-                      onClick={handleProfileClick}
-                      className="btn btn-link nav-link"
-                    >
-                      Profile
-                    </button>
-                  </li>
                 </>
               )}
             </ul>
