@@ -100,7 +100,7 @@ export default function Navbar() {
                 <>
                   <li className="nav-item">
                     <button
-                      onClick={handleProfileClick}
+                      onClick={handleMenu}
                       className="btn btn-link nav-link"
                     >
                       Menu
@@ -108,15 +108,16 @@ export default function Navbar() {
                   </li>
                   <li className="nav-item">
                     <button
-                      onClick={handleLogout}
+                      onClick={handleProfileClick}
                       className="btn btn-link nav-link"
                     >
                       Profile
                     </button>
                   </li>
+
                   <li className="nav-item">
                     <button
-                      onClick={handleMenu}
+                      onClick={handleLogout}
                       className="btn btn-link nav-link"
                     >
                       Log Out
