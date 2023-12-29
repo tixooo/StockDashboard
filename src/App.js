@@ -6,9 +6,9 @@ import {
   Profile,
   About
 } from './utils/barrelComponents.js';
+import { PrivateView, MainView } from './utils/barrelViews.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
-import MainView from './Views/MainView.jsx';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -24,6 +24,7 @@ let App = () => {
           <Route path="/register" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/stocks" element={<PrivateView />} />
         </Routes>
         <Footer />
       </BrowserRouter>
