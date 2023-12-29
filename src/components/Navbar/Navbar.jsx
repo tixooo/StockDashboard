@@ -6,6 +6,7 @@ import { logout } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
 import SignIn from '../Login/Login.jsx';
 import SignUp from '../Register/Register.jsx';
+import Menu from '../Menu/Menu.jsx';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showMenuModal, setShowMenuModal] = useState(false);
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
   };
@@ -24,6 +26,9 @@ export default function Navbar() {
   const handleProfileLogIn = () => {
     setShowLoginModal(true);
   };
+  const handleMenu = () => {
+    setShowMenuModal(true);
+  };
   const handleCloseRegister = () => {
     setShowRegisterModal(false);
   };
@@ -32,6 +37,9 @@ export default function Navbar() {
   };
   const handleCloseModal = () => {
     setShowProfileModal(false);
+  };
+  const handleCloseMenuModal = () => {
+    setShowMenuModal(false);
   };
   const handleLogout = () => {
     dispatch(logout());
@@ -53,6 +61,11 @@ export default function Navbar() {
         user={user}
         show={showRegisterModal}
         handleClose={handleCloseRegister}
+      />
+      <Menu
+        user={user}
+        show={showMenuModal}
+        handleClose={handleCloseMenuModal}
       />
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -91,6 +104,14 @@ export default function Navbar() {
                       className="btn btn-link nav-link"
                     >
                       Profile
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      onClick={handleMenu}
+                      className="btn btn-link nav-link"
+                    >
+                      Menu
                     </button>
                   </li>
                   <li className="nav-item">
