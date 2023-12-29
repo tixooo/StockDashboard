@@ -13,16 +13,16 @@ const ProfileModal = ({ show, handleClose }) => {
       </Modal.Header>
       <Modal.Body>
         <p>
-          <strong>Crypto</strong>
+          <Button>Crypto</Button>
         </p>
         <p>
-          <strong>Stocks</strong>
+          <Button>Stocks</Button>
         </p>
         <p>
-          <strong>Gold</strong>
+          <Button>Gold</Button>
         </p>
         <p>
-          <strong>Currencies</strong>
+          <Button>Currencies</Button>
         </p>
       </Modal.Body>
       <Modal.Footer>
