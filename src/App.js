@@ -7,13 +7,25 @@ import {
   About
 } from './utils/barrelComponents.js';
 import { PrivateView, MainView } from './utils/barrelViews.js';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import store from './redux/store.js';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 let App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const storedProfile = localStorage.getItem('userProfile');
+    if (storedProfile) {
+      const userProfile = JSON.parse(storedProfile);
+      if (userProfile.expiry > Date.now()) {
+        dispatch({ type: 'LOAD_PROFILE', payload: userProfile });
+      } else {
+        localStorage.removeItem('userProfile');
+      }
+    }
+  }, [dispatch]);
   return (
     <Provider store={store}>
       <BrowserRouter>
