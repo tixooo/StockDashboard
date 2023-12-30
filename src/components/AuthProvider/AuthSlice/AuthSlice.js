@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import CryptoJS from 'crypto-js';
 
 const initialState = {
   user: null,
@@ -10,20 +11,23 @@ export const login = createAsyncThunk(
   'auth/login',
   async ({ username, password, fullName, email }, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        'https://smd-backend-nu2a.onrender.com/api/auth/login',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, fullName, email })
-        }
-      );
+      const handleLogin = async () => {
+        const hashedPassword = CryptoJS.SHA256(password).toString();
+        const response = await fetch(
+          'https://smd-backend-nu2a.onrender.com/api/auth/login',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, hashedPassword, fullName, email })
+          }
+        );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        return rejectWithValue(errorData);
-      }
-      return response.json();
+        if (!response.ok) {
+          const errorData = await response.json();
+          return rejectWithValue(errorData);
+        }
+        return response.json();
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -33,17 +37,19 @@ export const register = createAsyncThunk(
   'auth/register',
   async ({ username, password, fullName, email }, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        'https://smd-backend-nu2a.onrender.com/api/auth/register',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, fullName, email })
-        }
-      );
-
-      if (!response.ok) throw new Error('Registration failed');
-      return response.json();
+      const handleLogin = async () => {
+        const hashedPassword = CryptoJS.SHA256(password).toString();
+        const response = await fetch(
+          'https://smd-backend-nu2a.onrender.com/api/auth/register',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, hashedPassword, fullName, email })
+          }
+        );
+        if (!response.ok) throw new Error('Registration failed');
+        return response.json();
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }
