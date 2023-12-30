@@ -27,7 +27,6 @@ const SignUp = ({ show, handleClose }) => {
 
     // Proceed with the registration
     dispatch(registerAction({ username, password, fullName, email }));
-    setShowModal(false);
   };
 
   return (
@@ -64,9 +63,13 @@ const SignUp = ({ show, handleClose }) => {
               <input type="email" name="email" placeholder="Email" />
             </p>
 
-            <button type="submit" className="btn btn-primary">
+            <Button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleClose}
+            >
               Register
-            </button>
+            </Button>
           </form>
         </Modal.Body>
         <Modal.Footer>
