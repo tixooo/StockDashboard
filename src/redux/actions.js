@@ -5,9 +5,12 @@ export const loginSuccess = (userData) => ({
   payload: userData
 });
 
-export const logout = () => ({
-  type: LOGOUT
-});
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.removeItem('userProfile');
+    dispatch({ type: 'LOGOUT' });
+  };
+};
 
 // Async action creators using redux-thunk
 export const login =
@@ -25,7 +28,15 @@ export const login =
       );
 
       if (response.ok) {
+        // we can maybe think of saving the profile to the local storage from the user, thus will save even when the browser is closed or the session is closed for the duration of the set amount of time, but we have to be carefull with data, can be considered.
         const userData = await response.json();
+        const profileExpiry = 60 * 60 * 1000;
+        const profileWithExpiry = {
+          ...userData,
+          expiry: Date.now() + profileExpiry
+        };
+        localStorage.setItem('userProfile', JSON.stringify(profileWithExpiry));
+
         dispatch(loginSuccess(userData));
       } else {
         console.error('Login failed');
@@ -34,5 +45,3 @@ export const login =
       console.error('Error during login:', error.message);
     }
   };
-
-// To create an async action for registration!
