@@ -27,6 +27,7 @@ const SignUp = ({ show, handleClose }) => {
 
     // Proceed with the registration
     dispatch(registerAction({ username, password, fullName, email }));
+    handleClose();
   };
 
   return (
