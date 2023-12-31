@@ -7,8 +7,7 @@ import {
   About
 } from './utils/barrelComponents.js';
 import { PrivateView, MainView } from './utils/barrelViews.js';
-import { Provider, useDispatch } from 'react-redux';
-import store from './redux/store.js';
+import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -27,20 +26,18 @@ let App = () => {
     }
   }, [dispatch]);
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<MainView />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/stocks" element={<PrivateView />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<MainView />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/stocks" element={<PrivateView />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 export default App;
