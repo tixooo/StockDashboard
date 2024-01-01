@@ -3,11 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
 import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = ({ show, handleClose }) => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
-
+  const navigate = useNavigate();
+  // Maybe to make a modal for the feedback message, both error and non error
+  const [feedbackMessage, setFeedbackMessage] = useState('');
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const username = e.target.elements.username.value;
@@ -20,14 +23,23 @@ const SignUp = ({ show, handleClose }) => {
     if (password !== repeatPassword) {
       // to create a custom modal for the error
       setErrorMessage('Passwords do not match');
-      return; // Stop the form submission
+      return;
     }
     // Clear error message if passwords match
     setErrorMessage('');
 
     // Proceed with the registration
-    dispatch(registerAction({ username, password, fullName, email }));
-    handleClose();
+    dispatch(registerAction({ username, password, fullName, email }))
+      .then(() => {
+        setFeedbackMessage('Registration successful! Logging you in.');
+        setTimeout(() => {
+          navigate('/');
+          handleClose();
+        }, 2000);
+      })
+      .catch((error) => {
+        setFeedbackMessage('Registration failed: ' + error.message);
+      });
   };
 
   return (
@@ -39,6 +51,9 @@ const SignUp = ({ show, handleClose }) => {
         <Modal.Body>
           <form onSubmit={handleFormSubmit}>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+            {feedbackMessage && (
+              <div className="feedback-message">{feedbackMessage}</div>
+            )}
             <p>
               <label htmlFor="fullName">Full name</label>
               <input type="text" name="fullName" placeholder="Full name" />
