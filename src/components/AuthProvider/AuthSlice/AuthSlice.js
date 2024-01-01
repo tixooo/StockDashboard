@@ -1,37 +1,38 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import { useDispatch } from 'react-redux';
 
 const initialState = {
   user: null,
   isLoading: false,
   error: null
 };
-
 export const login = createAsyncThunk(
   'auth/login',
-  async ({ username, password, fullName, email }, { rejectWithValue }) => {
+  async ({ username, password }, thunkAPI) => {
     try {
       const response = await fetch(
         'https://smd-backend-nu2a.onrender.com/api/auth/login',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, fullName, email })
+          body: JSON.stringify({ username, password })
         }
       );
 
       if (!response.ok) {
         const errorData = await response.json();
-        return rejectWithValue(errorData);
+        return thunkAPI.rejectWithValue(errorData);
       }
-      return response.json();
+      const resData = await response.json();
+      return resData.user;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 export const register = createAsyncThunk(
   'auth/register',
-  async ({ username, password, fullName, email }, { rejectWithValue }) => {
+  async ({ username, password, fullName, email }, thunkAPI) => {
     try {
       const response = await fetch(
         'https://smd-backend-nu2a.onrender.com/api/auth/register',
@@ -41,11 +42,15 @@ export const register = createAsyncThunk(
           body: JSON.stringify({ username, password, fullName, email })
         }
       );
-
-      if (!response.ok) throw new Error('Registration failed');
-      return response.json();
+      if (!response.ok) {
+        const errorData = await response.json();
+        return thunkAPI.rejectWithValue(errorData);
+      }
+      const userData = await response.json();
+      thunkAPI.dispatch(login({ username, password }));
+      return userData;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -60,6 +65,26 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(login.fulfilled, (state, action) => {
+        // Set the user data on successful login
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        // Set the user data on successful registration
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addMatcher(
+        // Handle any rejected actions if you have them
+        (action) => action.type.endsWith('rejected'),
+        (state, action) => {
+          state.error = action.error.message;
+        }
+      );
   }
 });
 
