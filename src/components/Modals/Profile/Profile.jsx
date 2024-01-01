@@ -21,6 +21,7 @@ const ProfileModal = ({ show, handleClose }) => {
         <p>
           <strong>Full Name:</strong> {user.fullName}
         </p>
+        //to add the password and to make it changeable
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
