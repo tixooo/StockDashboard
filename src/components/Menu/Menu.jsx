@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const ProfileModal = ({ show, handleClose }) => {
   const user = useSelector((state) => state.auth.user);
@@ -13,16 +14,24 @@ const ProfileModal = ({ show, handleClose }) => {
       </Modal.Header>
       <Modal.Body>
         <p>
-          <Button>Crypto</Button>
+          <NavLink className="nav-link" to="/stocks">
+            <Button onClick={handleClose}>Crypto</Button>
+          </NavLink>
         </p>
         <p>
-          <Button>Stocks</Button>
+          <NavLink to="/stocks">
+            <Button onClick={handleClose}>Stocks</Button>
+          </NavLink>
         </p>
         <p>
-          <Button>Gold</Button>
+          <NavLink to="/stocks">
+            <Button onClick={handleClose}>Gold</Button>
+          </NavLink>
         </p>
         <p>
-          <Button>Currencies</Button>
+          <NavLink to="/stocks">
+            <Button onClick={handleClose}>Currencies</Button>
+          </NavLink>
         </p>
       </Modal.Body>
       <Modal.Footer>

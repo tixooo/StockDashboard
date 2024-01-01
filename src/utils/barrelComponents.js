@@ -6,5 +6,20 @@ import SignUp from '../components/Register/Register.jsx';
 import Sidebar from '../components/Sidebar/Sidebar.jsx';
 import Profile from '../components/Modals/Profile/Profile.jsx';
 import About from '../components/About/About.jsx';
+import ProfileModal from '../components/Menu/Menu.jsx';
+import SidebarPrivate from '../components/SidebarPrivate/SidebarPrivate.jsx';
+import MainPrivate from '../components/MainPrivate/MainPrivate.jsx';
 
-export { Footer, Navbar, Main, SignIn, SignUp, Sidebar, Profile, About };
+export {
+  Footer,
+  Navbar,
+  Main,
+  SignIn,
+  SignUp,
+  Sidebar,
+  Profile,
+  About,
+  ProfileModal,
+  SidebarPrivate,
+  MainPrivate
+};

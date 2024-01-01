@@ -1,0 +1,15 @@
+.mainPrivate-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.mainPrivate-card .card-header {
+    background-color: #f8f9fa;
+    border-bottom: none;
+}
+
+.mainPrivate-card .card-body {
+    color: #495057;
+}
