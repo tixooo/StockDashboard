@@ -7,7 +7,7 @@ SMDashboard is a dynamic and interactive stock market dashboard designed to prov
 - **Frontend Deployment**: [SMDashboard Frontend](https://smdashboard-tixooo-ec2b5662f2a102425c47790ccd84940098ce289abd2b.gitlab.io/stocks)
 - **Frontend Repository**: [GitLab Repo](https://gitlab.com/tixooo/smdashboard)
 - **Backend Repository**: [GitHub Repo](https://github.com/tixooo/smd-backend)
-- **Backend Deployment**: Deployed on Render.com
+- **Backend Deployment**: ~~Deployed on Render.com~~ Deployed on railway.app
 
 ## Features
 
