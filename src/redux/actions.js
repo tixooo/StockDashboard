@@ -16,7 +16,7 @@ export const logout = () => {
 export const login = (username, password) => async (dispatch) => {
   try {
     const response = await fetch(
-      'https://smd-backend-nu2a.onrender.com/api/auth/login',
+      'https://smd-backend-production.up.railway.app/api/auth/login',
       {
         method: 'POST',
         headers: {
