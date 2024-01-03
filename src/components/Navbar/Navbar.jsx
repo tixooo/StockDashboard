@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ import Menu from '../Menu/Menu.jsx';
 import './Navbar.css';
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
   const isAuthenticated = !!user;
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ export default function Navbar() {
   };
   const handleLogout = () => {
     dispatch(logout());
+    navigate('/');
   };
 
   return (
