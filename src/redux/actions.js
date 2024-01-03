@@ -27,7 +27,7 @@ export const login = (username, password) => async (dispatch) => {
     );
 
     if (response.ok) {
-      // we can maybe think of saving the profile to the local storage from the user, thus will save even when the browser is closed or the session is closed for the duration of the set amount of time, but we have to be careful with data, can be considered.
+      // TODO we can maybe think of saving the profile to the local storage from the user, thus will save even when the browser is closed or the session is closed for the duration of the set amount of time, but we have to be careful with data, can be considered.
       const userData = await response.json();
       const profileExpiry = 60 * 60 * 1000;
       const profileWithExpiry = {

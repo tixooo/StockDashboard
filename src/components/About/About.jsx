@@ -8,9 +8,9 @@ const About = () => {
       <div className="row mb-4">
         <div className="col-md-6">
           <img
-            src="https://i.imgur.com/zfVk9OR.png" // Update with the correct path to your logo
+            src="https://i.imgur.com/zfVk9OR.png"
             alt="Logo"
-            className="img-fluid" // Responsive image
+            className="img-fluid" // Responsive
           />
         </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center">

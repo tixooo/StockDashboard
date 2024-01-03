@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './SidebarPrivate.css'; // Import the CSS file
+import './SidebarPrivate.css';
 
 export default function SidebarPrivate() {
   return (

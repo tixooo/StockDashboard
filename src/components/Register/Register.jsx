@@ -9,7 +9,7 @@ const SignUp = ({ show, handleClose }) => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  // Maybe to make a modal for the feedback message, both error and non error
+  // TODO Maybe to make a modal for the feedback message, both error and non error
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const SignUp = ({ show, handleClose }) => {
 
     // Check if passwords match
     if (password !== repeatPassword) {
-      // to create a custom modal for the error
+      // TODO to create a custom modal for the error
       setErrorMessage('Passwords do not match');
       return;
     }
