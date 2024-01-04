@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../AuthProvider/AuthSlice/AuthSlice.js';
+import { logout } from '../../redux/slices/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
 import SignIn from '../Login/Login.jsx';
 import SignUp from '../Register/Register.jsx';

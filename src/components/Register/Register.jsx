@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
-import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
+import { register as registerAction } from '../../redux/slices/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
-import { login } from '../AuthProvider/AuthSlice/AuthSlice.js';
+import { login } from '../../redux/slices/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
 
 const SignIn = ({ show, handleClose }) => {
