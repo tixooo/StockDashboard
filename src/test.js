@@ -1,82 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useDispatch } from 'react-redux';
-import { register as registerAction } from '../AuthProvider/AuthSlice/AuthSlice.js';
-import { Modal, Button } from 'react-bootstrap';
+import './SidebarPrivate.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addStocks } from '../../redux/slices/stocksSlice.js';
+import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-const SignUp = () => {
+export default function SidebarPrivate() {
   const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.elements.username.value;
-    const password = e.target.elements.password.value;
-    const repeatPassword = e.target.elements.repeatPassword.value;
-    const email = e.target.elements.email.value;
-    const fullName = e.target.elements.fullName.value;
-
-    // Check if passwords match
-    if (password !== repeatPassword) {
-      // to create a custom modal for the error
-      setErrorMessage('Passwords do not match');
-      return; // Stop the form submission
-    }
-    // Clear error message if passwords match
-    setErrorMessage('');
-
-    // Proceed with the registration
-    dispatch(registerAction({ username, password, fullName, email }));
-    setShowModal(false);
-  };
-
+  const stocks = useSelector((state) => state.stocks.stocks);
+  useEffect(() => {
+    dispatch(addStocks({}));
+  }, [dispatch]);
+  console.log(stocks);
   return (
-    <>
-      <div className="register">
-        <h1>Register</h1>
-        <button onClick={() => setShowModal(true)}>Register</button>
-      </div>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Register</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleFormSubmit}>
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-            <p>
-              <label htmlFor="fullName">Full name</label>
-              <input type="text" name="fullName" placeholder="Full name" />
-            </p>
-            <p>
-              <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" />
-            </p>
-            <p>
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" />
-            </p>
-            <p>
-              <label htmlFor="repeatPassword">Repeat password</label>
-              <input
-                type="password"
-                name="repeatPassword"
-                placeholder="Repeat password"
-              />
-            </p>
-            <p>
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" placeholder="Email" />
-            </p>
-
-            <button type="submit" className="btn btn-primary">
-              Register
-            </button>
-          </form>
-        </Modal.Body>
-      </Modal>
-    </>
+    <div
+      className="card sidebar-card"
+      style={{ overflowY: 'scroll', height: '830px' }}
+    >
+      <div className="card-header">Sidebar List of Stocks</div>
+      <ul className="list-group list-group-flush">
+        {stocks && stocks.length > 0 ? (
+          stocks.map((stock, index) => (
+            <li key={index} className="list-group-item">
+              <p>
+                <NavLink className="nav-link">
+                  <Button>({stock.symbol})</Button> {stock.name}
+                </NavLink>
+              </p>
+              <p> Stock Price {stock.price}</p>
+              <p> Stock Change {stock.change}</p>
+              <p> Stock Change % {stock.changePercent}</p>
+              <p> Stock Volume {stock.volume}</p>
+              <p> Stock Market Cap {stock.marketCap}</p>
+              <p> Stock Dividend Yield {stock.dividendYield}</p>
+              <p> Stock EPS {stock.eps}</p>
+              <p> Stock PE {stock.pe}</p>
+              <p> Stock Week 52 High {stock.week52high}</p>
+              <p> Stock Week 52 Low {stock.week52low}</p>
+              <p> Stock YTD Change {stock.ytdChange}</p>
+            </li>
+          ))
+        ) : (
+          <li className="list-group-item">No stocks available</li>
+        )}
+      </ul>
+    </div>
   );
-};
-
-export default SignUp;
+}
