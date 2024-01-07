@@ -2,16 +2,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   stocks: null,
+  sidebarStocks: null,
   isLoading: false,
   error: null
 };
 export const addStocks = createAsyncThunk(
   'stocks/addStocks',
-  async (_, thunkAPI) => {
+  async (symbol, thunkAPI) => {
     try {
-      const queryString = new URLSearchParams({}).toString();
       const response = await fetch(
-        `https://smd-backend-production.up.railway.app/api/data/stocks`,
+        `https://smd-backend-production.up.railway.app/api/data/addStock?symbol=${symbol}`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
