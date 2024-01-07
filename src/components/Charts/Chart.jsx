@@ -1,34 +1,30 @@
 import { candleStickOptions } from './constants.js';
 import ReactApexChart from 'react-apexcharts';
-import React from 'react';
-
-const data = [
-  {
-    x: '2023-12-11',
-    y: ['162.6800', '163.6500', '161.9500', '163.5100']
-  },
-  {
-    x: '2023-12-08',
-    y: ['160.0000', '162.0400', '160.0000', '161.9600']
-  },
-  {
-    x: '2023-12-07',
-    y: ['161.0000', '161.4650', '159.9700', '160.2200']
-  },
-  {
-    x: '2023-12-06',
-    y: ['161.5900', '162.3550', '160.0100', '160.2800']
-  }
-];
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addStocks } from '../../redux/slices/stocksSlice.js';
+import { useParams } from 'react-router-dom';
 
 const CandleStickChart = () => {
+  const dispatch = useDispatch();
+  const { symbol } = useParams();
+  const stockData = useSelector((state) => state.stocks.stocks);
+  useEffect(() => {
+    dispatch(addStocks(symbol));
+  }, [dispatch, symbol]);
+
+  const transformedData = stockData?.['Monthly Time Series']
+    ? Object.entries(stockData['Monthly Time Series']).map(([date, data]) => ({
+        x: date,
+        y: [data['1. open'], data['2. high'], data['3. low'], data['4. close']]
+      }))
+    : [];
   return (
     <>
       <ReactApexChart
         type="candlestick"
         options={candleStickOptions}
-        // series={[{ data: 'filtered data here' }]}
-        series={[{ data: data }]}
+        series={[{ data: transformedData }]}
       />
     </>
   );

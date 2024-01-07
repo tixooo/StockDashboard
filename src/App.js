@@ -4,7 +4,8 @@ import {
   SignIn,
   SignUp,
   Profile,
-  About
+  About,
+  MainPrivate
 } from './utils/barrelComponents.js';
 import { PrivateView, MainView } from './utils/barrelViews.js';
 import { useDispatch } from 'react-redux';
@@ -35,6 +36,7 @@ let App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/stocks" element={<PrivateView />} />
+        <Route path="/stock/:symbol" element={<PrivateView />} />
       </Routes>
       <Footer />
     </BrowserRouter>
