@@ -6,12 +6,12 @@ const initialState = {
   isLoading: false,
   error: null
 };
-export const addStocks = createAsyncThunk(
-  'stocks/addStocks',
-  async (symbol, thunkAPI) => {
+export const fetchAllStockData = createAsyncThunk(
+  'stocks/fetchAllStockData',
+  async (_, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://smd-backend-production.up.railway.app/api/data/addStock?symbol=${symbol}`,
+        `https://smd-backend-production.up.railway.app/api/data/addStock`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
@@ -39,14 +39,14 @@ const stocksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(addStocks.pending, (state) => {
+      .addCase(fetchAllStockData.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(addStocks.fulfilled, (state, action) => {
+      .addCase(fetchAllStockData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.stocks = action.payload;
+        state.stockData = action.payload;
       })
-      .addCase(addStocks.rejected, (state, action) => {
+      .addCase(fetchAllStockData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

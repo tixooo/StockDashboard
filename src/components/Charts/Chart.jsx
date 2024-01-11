@@ -2,7 +2,7 @@ import { candleStickOptions } from './constants.js';
 import ReactApexChart from 'react-apexcharts';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addStocks } from '../../redux/slices/stocksSlice.js';
+import { fetchAllStockData } from '../../redux/slices/stocksSlice.js';
 import { useParams } from 'react-router-dom';
 
 const CandleStickChart = () => {
@@ -10,7 +10,7 @@ const CandleStickChart = () => {
   const { symbol } = useParams();
   const stockData = useSelector((state) => state.stocks.stocks);
   useEffect(() => {
-    dispatch(addStocks(symbol));
+    dispatch(fetchAllStockData(symbol));
   }, [dispatch, symbol]);
 
   const transformedData = stockData?.['Monthly Time Series']

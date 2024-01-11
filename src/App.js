@@ -4,8 +4,7 @@ import {
   SignIn,
   SignUp,
   Profile,
-  About,
-  MainPrivate
+  About
 } from './utils/barrelComponents.js';
 import { PrivateView, MainView } from './utils/barrelViews.js';
 import { useDispatch } from 'react-redux';
