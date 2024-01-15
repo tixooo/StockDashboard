@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT } from './actionTypes';
+import { LOGIN_SUCCESS } from './actionTypes';
 
 export const loginSuccess = (userData) => ({
   type: LOGIN_SUCCESS,

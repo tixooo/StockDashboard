@@ -7,3 +7,16 @@
 .social-icon:hover i {
     color: #495057;
 }
+
+/* Dark mode */
+.bg-dark.navbar-dark .social-icon i {
+    color: rgb(207, 160, 236)
+}
+
+.bg-dark.navbar-dark .social-icon:hover i {
+    color: rgb(187, 93, 245)
+}
+
+.bg-dark.navbar-dark .container p {
+    color: rgb(207, 160, 236)
+}
