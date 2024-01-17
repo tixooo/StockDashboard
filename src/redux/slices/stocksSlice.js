@@ -1,57 +1,42 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const initialState = {
-  stocks: null,
-  sidebarStocks: null,
-  isLoading: false,
-  error: null
-};
-export const fetchAllStockData = createAsyncThunk(
-  'stocks/fetchAllStockData',
-  async (_, thunkAPI) => {
+export const fetchStockData = createAsyncThunk(
+  'stockData/fetchStockData',
+  async (symbol, thunkAPI) => {
     try {
-      const response = await fetch(
-        `https://smd-backend-production.up.railway.app/api/data/addStock`,
-        {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        }
+      const response = await axios.get(
+        `https://smd-backend-production.up.railway.app/api/data/addStock?symbol=${symbol}`
       );
-      if (!response.ok) {
-        const errorData = await response.json();
-        return thunkAPI.rejectWithValue(errorData);
-      }
-      const stockData = await response.json();
-      return stockData.allStocks;
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
 
-const stocksSlice = createSlice({
-  name: 'stocks',
-  initialState,
-  reducers: {
-    clearError(state) {
-      state.error = null;
-    }
+const stockDataSlice = createSlice({
+  name: 'stockData',
+  initialState: {
+    data: {},
+    loading: false,
+    error: null
   },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllStockData.pending, (state) => {
-        state.isLoading = true;
+      .addCase(fetchStockData.pending, (state) => {
+        state.loading = true;
       })
-      .addCase(fetchAllStockData.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.stockData = action.payload;
+      .addCase(fetchStockData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data[action.meta.arg] = action.payload; // Store data with symbol as key
       })
-      .addCase(fetchAllStockData.rejected, (state, action) => {
-        state.isLoading = false;
+      .addCase(fetchStockData.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       });
   }
 });
 
-export const { clearError } = stocksSlice.actions;
-export default stocksSlice.reducer;
+export default stockDataSlice.reducer;
