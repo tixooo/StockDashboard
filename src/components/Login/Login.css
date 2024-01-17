@@ -1,0 +1,29 @@
+.login-card.bg-light.button-light {
+    background-color: #127fec;
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+  }
+  
+  /* Dark mode styles */
+  
+  .login-card.bg-dark.header-dark {
+    
+    color: rgb(195, 135, 233);
+    background-color: #28e2b0;
+  }
+  
+  .login-card.bg-dark.body-dark {
+    background-color: #207ad4;
+    color: rgb(195, 135, 233);
+  }
+  
+  .login-card.bg-dark.footer-dark {
+    background-color: #207ad4;
+    color: rgb(195, 135, 233);
+  }
+  
+  .login-card.bg-dark.button-dark {
+    background-color: #ec1219;
+    color: rgb(195, 135, 233);
+    border-color: rgb(195, 135, 233);
+  }

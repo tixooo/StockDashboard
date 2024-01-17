@@ -8,6 +8,9 @@ import SignIn from '../Login/Login.jsx';
 import SignUp from '../Register/Register.jsx';
 import Menu from '../Menu/Menu.jsx';
 import './Navbar.css';
+import { Toggle } from '../Dark mode/ToggleButton.js';
+import { setDarkMode } from '../../redux/slices/themeSlice.js';
+import '../../App.css';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -18,6 +21,9 @@ export default function Navbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showMenuModal, setShowMenuModal] = useState(false);
+
+  const { isDarkMode } = useSelector((state) => state.theme);
+
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
   };
@@ -47,6 +53,10 @@ export default function Navbar() {
     navigate('/');
   };
 
+  const handleDarkModeToggle = () => {
+    dispatch(setDarkMode(!isDarkMode));
+  };
+
   return (
     <>
       <Profile
@@ -64,12 +74,17 @@ export default function Navbar() {
         show={showRegisterModal}
         handleClose={handleCloseRegister}
       />
+
       <Menu
         user={user}
         show={showMenuModal}
         handleClose={handleCloseMenuModal}
       />
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav
+        className={`navbar navbar-expand-lg ${
+          isDarkMode ? 'bg-dark navbar-dark' : 'bg-light navbar-light'
+        }`}
+      >
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <img
@@ -80,6 +95,13 @@ export default function Navbar() {
           </NavLink>
           <div className="d-flex justify-content-end w-100">
             <ul className="navbar-nav">
+              <li className="nav-item nav-link">
+                <Toggle
+                  label="Dark Mode"
+                  toggled={isDarkMode}
+                  onClick={handleDarkModeToggle}
+                />
+              </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/">
                   Home

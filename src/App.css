@@ -13,3 +13,15 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+body{
+    background-color: #b9c5d1;
+}
+
+/* Dark mode for background */
+.bg-dark-mode {
+    background-color: #222;
+    color: #f8f9fa;
+}
+
+
