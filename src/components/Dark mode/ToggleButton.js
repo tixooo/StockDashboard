@@ -1,4 +1,3 @@
-// eslint-disable
 import React from 'react';
 export const Toggle = ({ label, toggled, onClick }) => {
   return (
@@ -14,5 +13,3 @@ export const Toggle = ({ label, toggled, onClick }) => {
     </label>
   );
 };
-
-// export default Toggle;
