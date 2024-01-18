@@ -2,25 +2,15 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../redux/slices/AuthSlice.js';
 import Profile from '../Modals/Profile/Profile.jsx';
 import SignIn from '../Login/Login.jsx';
 import SignUp from '../Register/Register.jsx';
 import Menu from '../Menu/Menu.jsx';
 import './Navbar.css';
 import { Toggle } from '../Dark mode/ToggleButton.js';
+import { setDarkMode } from '../../redux/slices/themeSlice.js';
 import '../../App.css';
-import {
-  handleRegisterClick,
-  handleProfileClick,
-  handleProfileLogIn,
-  handleMenu,
-  handleCloseRegister,
-  handleCloseProfileLogIn,
-  handleCloseModal,
-  handleCloseMenuModal,
-  handleLogout,
-  handleDarkModeToggle
-} from '../EventHandlers/EventHandlers.js';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -31,30 +21,64 @@ export default function Navbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showMenuModal, setShowMenuModal] = useState(false);
+
   const { isDarkMode } = useSelector((state) => state.theme);
+
+  const handleRegisterClick = () => {
+    setShowRegisterModal(true);
+  };
+  const handleProfileClick = () => {
+    setShowProfileModal(true);
+  };
+  const handleProfileLogIn = () => {
+    setShowLoginModal(true);
+  };
+  const handleMenu = () => {
+    setShowMenuModal(true);
+  };
+  const handleCloseRegister = () => {
+    setShowRegisterModal(false);
+  };
+  const handleCloseProfileLogIn = () => {
+    setShowLoginModal(false);
+  };
+  const handleCloseModal = () => {
+    setShowProfileModal(false);
+  };
+  const handleCloseMenuModal = () => {
+    setShowMenuModal(false);
+  };
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
+  const handleDarkModeToggle = () => {
+    dispatch(setDarkMode(!isDarkMode));
+  };
 
   return (
     <>
       <Profile
         user={user}
         show={showProfileModal}
-        handleClose={() => handleCloseModal(setShowMenuModal)}
+        handleClose={handleCloseModal}
       />
       <SignIn
         user={user}
         show={showLoginModal}
-        handleClose={() => handleCloseProfileLogIn(setShowLoginModal)}
+        handleClose={handleCloseProfileLogIn}
       />
       <SignUp
         user={user}
         show={showRegisterModal}
-        handleClose={() => handleCloseRegister(setShowRegisterModal)}
+        handleClose={handleCloseRegister}
       />
 
       <Menu
         user={user}
         show={showMenuModal}
-        handleClose={() => handleCloseMenuModal(setShowMenuModal)}
+        handleClose={handleCloseMenuModal}
       />
       <nav
         className={`navbar navbar-expand-lg ${
@@ -75,7 +99,7 @@ export default function Navbar() {
                 <Toggle
                   label="Dark Mode"
                   toggled={isDarkMode}
-                  onClick={() => handleDarkModeToggle(dispatch, isDarkMode)}
+                  onClick={handleDarkModeToggle}
                 />
               </li>
               <li className="nav-item">
@@ -100,7 +124,7 @@ export default function Navbar() {
                 <>
                   <li className="nav-item">
                     <button
-                      onClick={() => handleMenu(setShowMenuModal)}
+                      onClick={handleMenu}
                       className="btn btn-link nav-link"
                     >
                       Menu
@@ -108,7 +132,7 @@ export default function Navbar() {
                   </li>
                   <li className="nav-item">
                     <button
-                      onClick={() => handleProfileClick(setShowProfileModal)}
+                      onClick={handleProfileClick}
                       className="btn btn-link nav-link"
                     >
                       Profile
@@ -117,7 +141,7 @@ export default function Navbar() {
 
                   <li className="nav-item">
                     <button
-                      onClick={() => handleLogout(dispatch, navigate)}
+                      onClick={handleLogout}
                       className="btn btn-link nav-link"
                     >
                       Log Out
@@ -128,7 +152,7 @@ export default function Navbar() {
                 <>
                   <li className="nav-item">
                     <button
-                      onClick={() => handleProfileLogIn(setShowLoginModal)}
+                      onClick={handleProfileLogIn}
                       className="btn btn-link nav-link"
                     >
                       Log In
@@ -136,7 +160,7 @@ export default function Navbar() {
                   </li>
                   <li className="nav-item">
                     <button
-                      onClick={() => handleRegisterClick(setShowRegisterModal)}
+                      onClick={handleRegisterClick}
                       className="btn btn-link nav-link"
                     >
                       Register
