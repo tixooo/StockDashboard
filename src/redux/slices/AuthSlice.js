@@ -68,17 +68,14 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
-        // Set the user data on successful login
         state.user = action.payload;
         state.error = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        // Set the user data on successful registration
         state.user = action.payload;
         state.error = null;
       })
       .addMatcher(
-        // Handle any rejected actions if you have them
         (action) => action.type.endsWith('rejected'),
         (state, action) => {
           state.error = action.error.message;

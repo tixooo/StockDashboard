@@ -12,17 +12,23 @@ export default function SidebarPrivate() {
   const dispatch = useDispatch();
   const stocks = useSelector((state) => state.sideBarStocks.stock);
   const stockData = useSelector((state) => state.stockData);
+
   useEffect(() => {
-    dispatch(sideBarStocks({}));
-    if (stocks) {
+    const handleStocks = async () => {
+      await dispatch(sideBarStocks({}));
+    };
+    handleStocks();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (stocks.length !== 0) {
       stocks.forEach((stock) => {
         if (!stockData.data[stock.symbol]) {
-          // Check if data for this symbol is not already fetched
           dispatch(fetchStockData(stock.symbol));
         }
       });
     }
-  }, [dispatch, stocks]);
+  }, [stocks, dispatch, stockData.data]);
   return (
     <div
       className={`card sidebar-card ${
@@ -44,7 +50,7 @@ export default function SidebarPrivate() {
                   <p>Stock High: {stockData.data[stock.symbol]['h']}</p>
                   <p>Stock Low: {stockData.data[stock.symbol]['l']}</p>
                   <p>Stock Close: {stockData.data[stock.symbol]['pc']}</p>
-                  <p>Stock Volume: {stockData.data[stock.symbol]['v']}</p>
+                  <p>Percent Change: {stockData.data[stock.symbol]['dp']}</p>
                 </>
               ) : (
                 <p>Loading stock data...</p>
