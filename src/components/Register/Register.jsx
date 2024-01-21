@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
 import { register as registerAction } from '../../redux/slices/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
@@ -56,15 +56,33 @@ const SignUp = ({ show, handleClose }) => {
             )}
             <p>
               <label htmlFor="fullName">Full name</label>
-              <input type="text" name="fullName" placeholder="Full name" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full name"
+                id="fullName"
+                data-testid="fullNameInput"
+              />
             </p>
             <p>
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" />
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                id="username"
+                data-testid="usernameInput"
+              />
             </p>
             <p>
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="password"
+                data-testid="passwordInput"
+              />
             </p>
             <p>
               <label htmlFor="repeatPassword">Repeat password</label>
@@ -72,14 +90,26 @@ const SignUp = ({ show, handleClose }) => {
                 type="password"
                 name="repeatPassword"
                 placeholder="Repeat password"
+                id="repeatPassword"
+                data-testid="repeatPasswordInput"
               />
             </p>
             <p>
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                id="email"
+                data-testid="emailInput"
+              />
             </p>
 
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              data-testid="registerBtn"
+            >
               Register
             </button>
           </form>
