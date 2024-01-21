@@ -12,12 +12,11 @@ const CandleStickChart = () => {
   const transformedData = stockData
     ? [
         {
-          x: stockData.t * 1000, // Convert timestamp to JavaScript Date
+          x: stockData.t * 1000,
           y: [stockData.o, stockData.h, stockData.l, stockData.c]
         }
       ]
     : [];
-
   return (
     <>
       <ReactApexChart

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Main.css';
-import { useSelector } from 'react-redux';
+import { fetchUserCount } from '../../redux/slices/NumOfRegUsersSlice.js';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Main() {
+  const dispatch = useDispatch();
+  const userCount = useSelector((state) => state.users.count);
+  const loading = useSelector((state) => state.users.loading);
+  const error = useSelector((state) => state.users.error);
   const { isDarkMode } = useSelector((state) => state.theme);
+  useEffect(() => {
+    dispatch(fetchUserCount());
+  }, [dispatch]);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <div
       className={`card main-card h-90 ${
@@ -39,7 +49,12 @@ export default function Main() {
           experiment, and emerge as a more confident, informed, and successful
           trader.
         </p>
-        <p className="card-text">Number of registered users</p>
+        <div className="card-footer">
+          <p className="card-text">
+            Number of registered users:{' '}
+            <span className="user-count">{userCount}</span>
+          </p>
+        </div>
       </div>
     </div>
   );

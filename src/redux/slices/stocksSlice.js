@@ -30,7 +30,7 @@ const stockDataSlice = createSlice({
       })
       .addCase(fetchStockData.fulfilled, (state, action) => {
         state.loading = false;
-        state.data[action.meta.arg] = action.payload; // Store data with symbol as key
+        state.data[action.meta.arg] = action.payload;
       })
       .addCase(fetchStockData.rejected, (state, action) => {
         state.loading = false;
