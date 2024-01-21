@@ -11,7 +11,9 @@ export default function Sidebar() {
         isDarkMode ? 'bg-dark navbar-dark' : 'bg-light navbar-light'
       }`}
     >
-      <div className="card-header">Sidebar</div>
+      <div className="card-header" data-testid="testElement">
+        Sidebar
+      </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           Top 10 most purchased in the last 7 days

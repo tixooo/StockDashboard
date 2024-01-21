@@ -28,6 +28,7 @@ const ProfileModal = ({ show, handleClose }) => {
         <p>
           <NavLink className="nav-link" to="/stocks">
             <Button
+              data-testid="testCrypto"
               onClick={handleClose}
               className={`card menu-card ${
                 isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
