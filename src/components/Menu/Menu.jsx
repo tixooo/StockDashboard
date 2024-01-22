@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './Menu.css';
 
-const ProfileModal = ({ show, handleClose }) => {
+const MenuModal = ({ show, handleClose }) => {
   const user = useSelector((state) => state.auth.user);
   const { isDarkMode } = useSelector((state) => state.theme);
   if (!user) return null;
@@ -94,4 +94,4 @@ const ProfileModal = ({ show, handleClose }) => {
   );
 };
 
-export default ProfileModal;
+export default MenuModal;

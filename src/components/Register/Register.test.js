@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import SignUp from './Register.jsx';
 import { Provider } from 'react-redux';
 import store from '../../redux/store.js';
-import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('SignUp Component', () => {

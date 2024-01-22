@@ -38,7 +38,7 @@ export default function Navbar() {
       <Profile
         user={user}
         show={showProfileModal}
-        handleClose={() => handleCloseModal(setShowMenuModal)}
+        handleClose={() => handleCloseModal(setShowProfileModal)}
       />
       <SignIn
         user={user}
