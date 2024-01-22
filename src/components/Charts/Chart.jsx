@@ -4,13 +4,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchStockData } from '../../redux/slices/stocksSlice.js';
+import newData from './data.js';
 
 const CandleStickChart = () => {
   // const dispatch = useDispatch();
   const { symbol } = useParams();
   const stockData = useSelector((state) => state.stockData.data[symbol]);
 
-  const transformedData =
+  const apiDataTransformed =
     stockData && typeof stockData === 'object'
       ? [
           {
@@ -19,12 +20,19 @@ const CandleStickChart = () => {
           }
         ]
       : [];
+
+  const newDataTransformed = newData.map((data) => ({
+    x: new Date(data.t * 1000),
+    y: [data.o, data.h, data.l, data.c]
+  }));
+
+  const combinedData = apiDataTransformed.concat(newDataTransformed);
   return (
     <>
       <ReactApexChart
         type="candlestick"
         options={candleStickOptions}
-        series={[{ data: transformedData }]}
+        series={[{ data: combinedData }]}
       />
     </>
   );
