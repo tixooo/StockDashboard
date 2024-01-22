@@ -18,14 +18,14 @@ const SignIn = ({ show, handleClose }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} data-testid="nameOfLabel">
         <div
           className={`card menu-card ${
             isDarkMode ? 'bg-dark header-dark' : 'bg-light header-light'
           }`}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
+            <Modal.Title data-testid="nameOfHeader">Login</Modal.Title>
           </Modal.Header>
         </div>
         <Modal.Body
@@ -36,11 +36,21 @@ const SignIn = ({ show, handleClose }) => {
           <form onSubmit={handleFormSubmit}>
             <p>
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="Username" />
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                data-testid="inputUsername"
+              />
             </p>
             <p>
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                data-testid="inputPassword"
+              />
             </p>
             <button
               type="submit"
@@ -48,6 +58,7 @@ const SignIn = ({ show, handleClose }) => {
               /*className={`card menu-card ${
                 isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
               }`}*/
+              data-testid="login-button"
             >
               Login
             </button>
