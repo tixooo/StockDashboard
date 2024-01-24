@@ -62,6 +62,7 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Full name"
                 id="fullName"
                 data-testid="fullNameInput"
+                data-cy="fullName"
               />
             </p>
             <p>
@@ -72,6 +73,7 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Username"
                 id="username"
                 data-testid="usernameInput"
+                data-cy="userName"
               />
             </p>
             <p>
@@ -82,6 +84,7 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Password"
                 id="password"
                 data-testid="passwordInput"
+                data-cy="password"
               />
             </p>
             <p>
@@ -92,6 +95,7 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Repeat password"
                 id="repeatPassword"
                 data-testid="repeatPasswordInput"
+                data-cy="repeatPassword"
               />
             </p>
             <p>
@@ -102,6 +106,7 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Email"
                 id="email"
                 data-testid="emailInput"
+                data-cy="email"
               />
             </p>
 
@@ -109,13 +114,14 @@ const SignUp = ({ show, handleClose }) => {
               type="submit"
               className="btn btn-primary"
               data-testid="registerBtn"
+              data-cy="register"
             >
               Register
             </button>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} data-cy="closeBtn">
             Close
           </Button>
         </Modal.Footer>

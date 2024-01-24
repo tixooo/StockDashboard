@@ -119,6 +119,7 @@ export default function Navbar() {
                     <button
                       onClick={() => handleLogout(dispatch, navigate)}
                       className="btn btn-link nav-link"
+                      data-cy="logOutBtn"
                     >
                       Log Out
                     </button>
@@ -128,6 +129,7 @@ export default function Navbar() {
                 <>
                   <li className="nav-item">
                     <button
+                      data-cy="logInBtn"
                       onClick={() => handleProfileLogIn(setShowLoginModal)}
                       className="btn btn-link nav-link"
                     >
@@ -136,6 +138,7 @@ export default function Navbar() {
                   </li>
                   <li className="nav-item">
                     <button
+                      data-cy="RegisterBtn"
                       onClick={() => handleRegisterClick(setShowRegisterModal)}
                       className="btn btn-link nav-link"
                     >
