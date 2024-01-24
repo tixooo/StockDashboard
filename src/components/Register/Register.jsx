@@ -11,6 +11,15 @@ const SignUp = ({ show, handleClose }) => {
   const navigate = useNavigate();
   // TODO Maybe to make a modal for the feedback message, both error and non error
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Invalid email format');
+      return false;
+    }
+    setErrorMessage('');
+    return true;
+  };
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const username = e.target.elements.username.value;
@@ -19,16 +28,16 @@ const SignUp = ({ show, handleClose }) => {
     const email = e.target.elements.email.value;
     const fullName = e.target.elements.fullName.value;
 
-    // Check if passwords match
     if (password !== repeatPassword) {
-      // TODO to create a custom modal for the error
       setErrorMessage('Passwords do not match');
       return;
     }
-    // Clear error message if passwords match
     setErrorMessage('');
 
-    // Proceed with the registration
+    if (!validateEmail(email)) {
+      return;
+    }
+
     dispatch(registerAction({ username, password, fullName, email }))
       .then(() => {
         setFeedbackMessage('Registration successful! Logging you in.');
@@ -106,7 +115,11 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Email"
                 id="email"
                 data-testid="emailInput"
+
                 data-cy="email"
+
+                onChange={(e) => validateEmail(e.target.value)}
+      
               />
             </p>
 
