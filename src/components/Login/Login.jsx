@@ -41,6 +41,7 @@ const SignIn = ({ show, handleClose }) => {
                 name="username"
                 placeholder="Username"
                 data-testid="inputUsername"
+                data-cy="username"
               />
             </p>
             <p>
@@ -50,6 +51,7 @@ const SignIn = ({ show, handleClose }) => {
                 name="password"
                 placeholder="Password"
                 data-testid="inputPassword"
+                data-cy="password"
               />
             </p>
             <button
@@ -59,6 +61,7 @@ const SignIn = ({ show, handleClose }) => {
                 isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
               }`}*/
               data-testid="login-button"
+              data-cy="logInButton"
             >
               Login
             </button>
@@ -70,6 +73,7 @@ const SignIn = ({ show, handleClose }) => {
           }`}
         >
           <Button
+            data-cy="closeButton"
             variant="secondary"
             onClick={handleClose}
             className={`card menu-card ${
