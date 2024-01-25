@@ -39,13 +39,7 @@ const ProfileModal = ({ show, handleClose }) => {
           isDarkMode ? 'bg-dark footer-dark' : 'bg-light footer-light'
         }`}
       >
-        <Button
-          variant="secondary"
-          onClick={handleClose}
-          className={`card menu-card ${
-            isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-          }`}
-        >
+        <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
       </Modal.Footer>

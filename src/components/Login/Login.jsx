@@ -57,9 +57,6 @@ const SignIn = ({ show, handleClose }) => {
             <button
               type="submit"
               className="btn btn-primary"
-              /*className={`card menu-card ${
-                isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-              }`}*/
               data-testid="login-button"
               data-cy="logInButton"
             >
@@ -76,9 +73,7 @@ const SignIn = ({ show, handleClose }) => {
             data-cy="closeButton"
             variant="secondary"
             onClick={handleClose}
-            className={`card menu-card ${
-              isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-            }`}
+            class="btn btn-primay"
           >
             Close
           </Button>

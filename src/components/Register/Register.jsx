@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch } from 'react-redux';
 import { register as registerAction } from '../../redux/slices/AuthSlice.js';
 import { Modal, Button } from 'react-bootstrap';
@@ -115,11 +114,8 @@ const SignUp = ({ show, handleClose }) => {
                 placeholder="Email"
                 id="email"
                 data-testid="emailInput"
-
                 data-cy="email"
-
                 onChange={(e) => validateEmail(e.target.value)}
-      
               />
             </p>
 

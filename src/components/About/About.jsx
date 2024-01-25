@@ -10,7 +10,7 @@ const About = () => {
           <img
             src="https://i.imgur.com/zfVk9OR.png"
             alt="Logo"
-            className="img-fluid" // Responsive
+            className="img-fluid"
           />
         </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center">

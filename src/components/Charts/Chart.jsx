@@ -1,13 +1,11 @@
 import { candleStickOptions } from './constants.js';
 import ReactApexChart from 'react-apexcharts';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchStockData } from '../../redux/slices/stocksSlice.js';
 import newData from './data.js';
 
 const CandleStickChart = () => {
-  // const dispatch = useDispatch();
   const { symbol } = useParams();
   const stockData = useSelector((state) => state.stockData.data[symbol]);
 

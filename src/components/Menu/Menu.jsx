@@ -27,51 +27,24 @@ const MenuModal = ({ show, handleClose }) => {
       >
         <p>
           <NavLink className="nav-link" to="/stocks">
-            <Button
-              data-testid="testCrypto"
-              onClick={handleClose}
-              className={`card menu-card ${
-                isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-              }`}
-            >
+            <Button data-testid="testCrypto" onClick={handleClose}>
               Crypto
             </Button>
           </NavLink>
         </p>
         <p>
           <NavLink to="/stocks">
-            <Button
-              onClick={handleClose}
-              className={`card menu-card ${
-                isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-              }`}
-            >
-              Stocks
-            </Button>
+            <Button onClick={handleClose}>Stocks</Button>
           </NavLink>
         </p>
         <p>
           <NavLink to="/stocks">
-            <Button
-              onClick={handleClose}
-              className={`card menu-card ${
-                isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-              }`}
-            >
-              Gold
-            </Button>
+            <Button onClick={handleClose}>Gold</Button>
           </NavLink>
         </p>
         <p>
           <NavLink to="/stocks">
-            <Button
-              onClick={handleClose}
-              className={`card menu-card ${
-                isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-              }`}
-            >
-              Currencies
-            </Button>
+            <Button onClick={handleClose}>Currencies</Button>
           </NavLink>
         </p>
       </Modal.Body>
@@ -80,13 +53,7 @@ const MenuModal = ({ show, handleClose }) => {
           isDarkMode ? 'bg-dark footer-dark' : 'bg-light footer-light'
         }`}
       >
-        <Button
-          variant="secondary"
-          onClick={handleClose}
-          className={`card menu-card ${
-            isDarkMode ? 'bg-dark button-dark' : 'bg-light button-light'
-          }`}
-        >
+        <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
       </Modal.Footer>
